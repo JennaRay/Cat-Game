@@ -1,5 +1,6 @@
 import pygame
 import spritesheet
+import constants
 
 class Player(pygame.sprite.Sprite):
     #Animation code from Coding with Russ tutorial
@@ -12,7 +13,7 @@ class Player(pygame.sprite.Sprite):
     position = [0, 0] #coordinates of character on screen
     velocity = [0, 0] #controls how quickly character moves and in what direction 
     SPEED = .15
-    JUMP_SPEED = .45 #controls how quickly character moves --- used in when changing velocity
+    JUMP_SPEED = .5 #controls how quickly character moves --- used in when changing velocity
     FALL_SPEED = .5
     jumping = False
     falling = False
@@ -108,10 +109,18 @@ class Player(pygame.sprite.Sprite):
     def update(self):
         self.position[0] += self.velocity[0]
         self.position[1] += self.velocity[1]
+
+        screen_scroll = [0, 0]
+        if self.position[1] < constants.SCROLL_THRESH:
+            screen_scroll[1] = constants.SCROLL_THRESH - self.position[1]
+            self.position[1] = constants.SCROLL_THRESH
+
         self.image = self.get_animation_frame()
         self.rect.x = self.position[0]
         self.rect.y = self.position[1]
         self.mask = pygame.mask.from_surface(self.image)
+
+        return screen_scroll
 
     #put character on screen
     def draw(self, surface):

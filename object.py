@@ -15,6 +15,12 @@ class Object(pygame.sprite.Sprite):
     def draw(self, surface):
         surface.blit(self.image, self.position)
 
+    def update(self, screen_scroll=[0, 0]):
+        self.position[0] += screen_scroll[0]
+        self.position[1] += screen_scroll[1]
+        self.rect.x += screen_scroll[0]
+        self.rect.y += screen_scroll[1]
+
 class Button(Object):
 
     def __init__(self, x, y, image_path, scale=(48, 96)):
