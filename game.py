@@ -125,7 +125,7 @@ def play():
                 if event.key == pygame.K_LSHIFT:
                     mc.set_speed(.3)
                     if mc.is_jumping():
-                        mc.set_speed(.5)
+                        mc.set_speed(1)
                 
             if event.type == pygame.KEYUP:
                 pressed = pygame.key.get_pressed()
@@ -138,7 +138,7 @@ def play():
                     if pressed[pygame.K_d]:
                         mc.move_right()
                 if event.key == pygame.K_LSHIFT:
-                    mc.set_speed(.15)
+                    mc.set_speed(.5)
 
         #jump
         current_time = pygame.time.get_ticks()

@@ -12,7 +12,7 @@ class Player(pygame.sprite.Sprite):
     current_action = 0 
     position = [0, 0] #coordinates of character on screen
     velocity = [0, 0] #controls how quickly character moves and in what direction 
-    SPEED = .15
+    SPEED = .5
     JUMP_SPEED = .5 #controls how quickly character moves --- used in when changing velocity
     FALL_SPEED = .5
     jumping = False
